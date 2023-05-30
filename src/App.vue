@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { toRefs } from 'vue';
+import { useCounterStore } from '@/stores/counter';
+const { count, increment } = toRefs(useCounterStore());
 </script>
 
 <template>
   <header>
-    <AButton type="primary">Button</AButton>
+    <p>{{ count }}</p>
+    <AButton @click="increment">increment</AButton>
     <div class="wrapper">
       <nav>
         <RouterLink to="/">Home</RouterLink>
@@ -15,5 +18,4 @@ import { RouterLink, RouterView } from 'vue-router'
   <RouterView />
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
