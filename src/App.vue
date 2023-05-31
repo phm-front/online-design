@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { toRefs } from 'vue';
 import { useCounterStore } from '@/stores/counter';
 const { count, increment } = toRefs(useCounterStore());
 </script>
