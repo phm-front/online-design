@@ -1,8 +1,9 @@
 <template>
-  <RouterView />
+  editor page
 </template>
-
 <script setup lang="ts">
-</script>
 
-<style scoped></style>
+</script>
+<style scoped lang="scss">
+
+</style>
