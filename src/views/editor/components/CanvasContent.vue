@@ -4,11 +4,13 @@
       <span>画布区域</span>
       <div class="rigit-btns">btns</div>
     </div>
-    <div class="canvas-content">
-      <div v-for="component in components" :key="component.id">
-        {{ component.name }}
-        <HText />
-      </div>
+    <div class="canvas-area">
+      <component
+        v-for="component in components"
+        :key="component.id"
+        :is="component.name"
+        v-bind="component.props"
+      ></component>
     </div>
   </div>
 </template>
@@ -30,7 +32,7 @@ const { components } = toRefs(canvasStore);
   justify-content: space-between;
   width: 100%;
 }
-.canvas-content {
+.canvas-area {
   position: fixed;
   min-width: 375px;
   min-height: 200px;

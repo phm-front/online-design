@@ -6,7 +6,9 @@
       </template>
     </LayoutHeader>
     <ALayout>
-      <ALayoutSider width="300px" class="editor-aside">editor left</ALayoutSider>
+      <ALayoutSider width="300px" class="editor-aside">
+        <ComponentsList />
+      </ALayoutSider>
       <ALayoutContent style="padding-top: 64px;">
         <CanvasContent />
       </ALayoutContent>
@@ -17,6 +19,7 @@
 <script setup lang="ts">
 import LayoutHeader from '@/layout/components/LayoutHeader.vue';
 import CanvasContent from './components/CanvasContent.vue';
+import ComponentsList from './components/ComponentsList.vue';
 const workName = ref('')
 </script>
 <style scoped lang="scss">

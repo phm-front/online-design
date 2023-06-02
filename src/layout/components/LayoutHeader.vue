@@ -10,11 +10,7 @@
     </div>
     <div class="right-wrap">
       <slot name="right-btns" />
-      <AButton
-        type="primary"
-        shape="round"
-        v-if="!isLogin"
-      >
+      <AButton type="primary" shape="round" v-if="!isLogin">
         登录
       </AButton>
       <ADropdownButton
@@ -34,7 +30,7 @@
   </ALayoutHeader>
 </template>
 <script setup lang="ts">
-import { useUserStore } from "@/stores/user";
+import { useUserStore } from '@/stores/user';
 import { Modal, message } from 'ant-design-vue';
 
 const userStore = useUserStore();
@@ -49,17 +45,17 @@ const handleMenuClick = ({ key }: any) => {
     Modal.confirm({
       title: '提示',
       content: '确认登出？',
-      okText: "确认",
-      cancelText: "取消",
+      okText: '确认',
+      cancelText: '取消',
       onOk() {
         router.replace('/login');
         setLogin(false);
         setUserInfo({});
-        message.success('登出成功！')
+        message.success('登出成功！');
       }
     });
   }
-}
+};
 </script>
 <style scoped lang="scss">
 .ant-layout-header {

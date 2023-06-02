@@ -1,7 +1,7 @@
 <template>
   <div class="template-detail">
     <div class="center-wrapper">
-      <img :src="templateInfo?.url" class="template-img" alt="">
+      <img :src="templateInfo?.url" class="template-img" alt="" />
       <div class="right-info">
         <h2>{{ templateInfo?.name }}</h2>
         <p>
@@ -16,7 +16,7 @@
             type="primary"
             shape="round"
             size="large"
-            style="margin-right: 16px;"
+            style="margin-right: 16px"
             @click="useTemplateToEdit"
           >
             使用模版
@@ -31,7 +31,7 @@
 import { useTemplateListStore } from '@/stores/templateList';
 
 const router = useRouter();
-const { getTemplateById } = useTemplateListStore()
+const { getTemplateById } = useTemplateListStore();
 
 const route = useRoute();
 const id = Number(route.params.id);
@@ -44,8 +44,8 @@ const useTemplateToEdit = () => {
     params: {
       id: templateInfo!.id
     }
-  })
-}
+  });
+};
 </script>
 <style scoped lang="scss">
 .template-detail {

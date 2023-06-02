@@ -13,7 +13,8 @@
           shape="round"
           size="large"
           @click="useCurrentTemplate(item)"
-        >使用该模板创建</AButton>
+          >使用该模板创建</AButton
+        >
       </div>
       <div class="template-name">{{ item.name }}</div>
       <div class="description-info">
@@ -61,7 +62,8 @@ const useCurrentTemplate = (templateInfo: Template) => {
   border-radius: 12px;
   cursor: pointer;
   overflow: hidden;
-  box-shadow: 0 1px 2px -2px #00000029, 0 3px 6px #0000001f, 0 5px 12px 4px #00000017;
+  box-shadow: 0 1px 2px -2px #00000029, 0 3px 6px #0000001f,
+    0 5px 12px 4px #00000017;
   .placeholder {
     height: 390px;
   }

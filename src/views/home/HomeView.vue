@@ -5,7 +5,10 @@
     </div>
     <WelcomeRow />
     <div class="center-wrapper">
-      <ContentTitle title="热门海报" description="只需替换文字和图片，一键自动生成H5" />
+      <ContentTitle
+        title="热门海报"
+        description="只需替换文字和图片，一键自动生成H5"
+      />
       <TemplateList :list="templateList" @useTemplate="useTemplate" />
     </div>
   </ALayoutContent>
@@ -28,8 +31,8 @@ const useTemplate = (templateInfo: Template) => {
     params: {
       id: templateInfo.id
     }
-  })
-}
+  });
+};
 </script>
 <style scoped lang="scss">
 .banner {
@@ -44,5 +47,4 @@ const useTemplate = (templateInfo: Template) => {
   height: 174px;
   background-color: #f2f2f2;
 }
-
 </style>

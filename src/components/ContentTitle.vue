@@ -27,7 +27,7 @@ defineProps({
   display: block;
   height: 1px;
   width: 60px;
-  background-color: #D8D8D8;
+  background-color: #d8d8d8;
 }
 .content-title {
   display: flex;
