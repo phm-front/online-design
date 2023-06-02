@@ -1,6 +1,10 @@
 <template>
   <ALayout>
-    <LayoutHeader />
+    <LayoutHeader>
+      <template #logo-right>
+        <span class="logo-text">figma</span>
+      </template>
+    </LayoutHeader>
     <LayoutContent />
     <LayoutFooter />
   </ALayout>
@@ -13,5 +17,10 @@ import LayoutFooter from './components/LayoutFooter.vue';
 <style scoped lang="scss">
 .ant-layout-content {
   background-color: #fff;
+}
+.logo-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
 }
 </style>

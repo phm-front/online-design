@@ -6,7 +6,7 @@
     <WelcomeRow />
     <div class="center-wrapper">
       <ContentTitle title="热门海报" description="只需替换文字和图片，一键自动生成H5" />
-      <TemplateList :list="templateList" />
+      <TemplateList :list="templateList" @useTemplate="useTemplate" />
     </div>
   </ALayoutContent>
 </template>
@@ -14,15 +14,22 @@
 import WelcomeRow from './components/WelcomeRow.vue';
 import type { Template } from '@/components/templateList/type';
 
-let templateList = ref<Template[]>([]);
-templateList.value = Array.from({ length: 6}).map((_, i) => ({
-  id: i,
-  url: 'https://static.imooc-lego.com/upload-files/screenshot-889755.png',
-  name: '前端架构师直播海报',
-  author: 'xiaoli',
-  tags: ['hot'],
-  usedNumber: 999
-}))
+import { useTemplateListStore } from '@/stores/templateList';
+
+const router = useRouter();
+const templateListStore = useTemplateListStore();
+
+const templateList = toRef(templateListStore, 'templateList');
+
+// 使用模版
+const useTemplate = (templateInfo: Template) => {
+  router.push({
+    name: 'template',
+    params: {
+      id: templateInfo.id
+    }
+  })
+}
 </script>
 <style scoped lang="scss">
 .banner {

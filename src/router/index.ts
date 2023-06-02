@@ -15,18 +15,26 @@ const router = createRouter({
           component: () => import('@/views/home/HomeView.vue')
         },
         {
-          path: 'editor/:id',
-          name: 'editor',
-          component: () => import('@/views/editor/EditorView.vue')
+          path: 'template/:id',
+          name: 'template',
+          component: () => import('@/views/template/TemplateView.vue')
         }
       ]
+    },
+    {
+      path: '/editor/:id',
+      name: 'editor',
+      component: () => import('@/views/editor/EditorView.vue')
     },
     {
       path: '/login',
       name: 'login',
       component: () => import('@/views/login/LoginView.vue')
     }
-  ]
+  ],
+  scrollBehavior() {
+    return { top: 0 };
+  }
 });
 
 export default router;

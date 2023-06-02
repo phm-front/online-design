@@ -6,13 +6,15 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import Components from 'unplugin-vue-components/vite';
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
 import AutoImport from 'unplugin-auto-import/vite';
-
+console.log(process.env.NODE_ENV);
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: process.env.NODE_ENV === 'production' ? '/design/' : '/',
   plugins: [
     vue(),
     vueJsx(),
     Components({
+      dirs: ['src/components', 'src/common'],
       resolvers: [AntDesignVueResolver()]
     }),
     AutoImport({

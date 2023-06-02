@@ -10,12 +10,18 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AButton: typeof import('ant-design-vue/es')['Button']
+    ADropdownButton: typeof import('ant-design-vue/es')['DropdownButton']
+    AInput: typeof import('ant-design-vue/es')['Input']
     ALayout: typeof import('ant-design-vue/es')['Layout']
     ALayoutContent: typeof import('ant-design-vue/es')['LayoutContent']
     ALayoutFooter: typeof import('ant-design-vue/es')['LayoutFooter']
     ALayoutHeader: typeof import('ant-design-vue/es')['LayoutHeader']
+    ALayoutSider: typeof import('ant-design-vue/es')['LayoutSider']
+    AMenu: typeof import('ant-design-vue/es')['Menu']
+    AMenuItem: typeof import('ant-design-vue/es')['MenuItem']
     Build: typeof import('./src/components/svg/Build.vue')['default']
     ContentTitle: typeof import('./src/components/ContentTitle.vue')['default']
+    HText: typeof import('./src/common/h-text/HText.vue')['default']
     HTML5: typeof import('./src/components/svg/HTML5.vue')['default']
     Light: typeof import('./src/components/svg/Light.vue')['default']
     LogoIcon: typeof import('./src/components/svg/LogoIcon.vue')['default']

@@ -38,8 +38,12 @@ defineProps({
     required: true
   }
 });
-const useCurrentTemplate = (item: Template) => {
-  console.log(item);
+const emit = defineEmits<{
+  (e: 'useTemplate', templateInfo: Template): void;
+}>();
+// 使用当前模板
+const useCurrentTemplate = (templateInfo: Template) => {
+  emit('useTemplate', templateInfo);
 };
 </script>
 <style scoped lang="scss">
