@@ -12,7 +12,9 @@
       <ALayoutContent style="padding-top: 64px;">
         <CanvasContent />
       </ALayoutContent>
-      <ALayoutSider width="300px" class="editor-aside">editor right</ALayoutSider>
+      <ALayoutSider width="300px" class="editor-aside">
+        <PropsForm />
+      </ALayoutSider>
     </ALayout>
   </ALayout>
 </template>
@@ -20,6 +22,7 @@
 import LayoutHeader from '@/layout/components/LayoutHeader.vue';
 import CanvasContent from './components/CanvasContent.vue';
 import ComponentsList from './components/ComponentsList.vue';
+import PropsForm from './components/PropsForm.vue';
 const workName = ref('')
 </script>
 <style scoped lang="scss">

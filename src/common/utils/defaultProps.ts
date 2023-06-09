@@ -44,3 +44,17 @@ export type CommonProps = {
   top: string;
   right: string;
 }
+
+export type PropsToFormCommon<T> = {
+  [key in keyof T]: {
+    label?: string;
+    component: string;
+    subComponent?: string;
+    options?: { label: string; value: any }[];
+    valuePropName?: string;
+    value?: any;
+    extraProps?: { [key: string]: any };
+    eventName?: string;
+    initialTransform?: (value: any) => any;
+  }
+}

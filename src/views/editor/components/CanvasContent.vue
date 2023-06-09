@@ -5,12 +5,16 @@
       <div class="rigit-btns">btns</div>
     </div>
     <div class="canvas-area">
-      <component
+      <EditWrapper
         v-for="component in components"
+        :active="currentElementId === component.id"
         :key="component.id"
-        :is="component.name"
-        v-bind="component.props"
-      ></component>
+        :id="component.id"
+        @set-active="handleSetActive"
+      >
+        <component :is="component.name" v-bind="component.props" />
+      </EditWrapper>
+      
     </div>
   </div>
 </template>
@@ -18,6 +22,11 @@
 import { useCanvasStore } from '@/stores/canvas';
 const canvasStore = useCanvasStore();
 const { components } = toRefs(canvasStore);
+const { currentElementId } = toRefs(canvasStore);
+const { setCurrentElementId } = canvasStore;
+const handleSetActive = (id: string) => {
+  setCurrentElementId(id);
+}
 </script>
 <style scoped lang="scss">
 .canvas-wrapper {

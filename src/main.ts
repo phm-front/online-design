@@ -5,8 +5,7 @@ import router from './router';
 import plugins from './plugins';
 
 import '@/assets/css/common.scss';
-import 'ant-design-vue/es/modal/style/css';
-import 'ant-design-vue/es/message/style/css';
+import 'ant-design-vue/dist/antd.css';
 
 const app = createApp(App);
 app.use(createPinia());

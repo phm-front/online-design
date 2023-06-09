@@ -23,6 +23,7 @@ declare module '@vue/runtime-core' {
     ATabs: typeof import('ant-design-vue/es')['Tabs']
     Build: typeof import('./src/components/svg/Build.vue')['default']
     ContentTitle: typeof import('./src/components/ContentTitle.vue')['default']
+    EditWrapper: typeof import('./src/components/EditWrapper.vue')['default']
     HTML5: typeof import('./src/components/svg/HTML5.vue')['default']
     ImageTabIcon: typeof import('./src/components/svg/ImageTabIcon.vue')['default']
     Light: typeof import('./src/components/svg/Light.vue')['default']

@@ -1,8 +1,10 @@
 import type { App } from 'vue';
 import registryComponentPlugin from './registryGlobalComponents';
+import registryAntdUiPlugin from './registryAntdUi';
 
 const plugins = [
-  registryComponentPlugin
+  registryComponentPlugin,
+  registryAntdUiPlugin
 ];
 export default {
   install: (app: App) => {
