@@ -6,7 +6,7 @@ export const textDefaultTemplate = [
     fontWeight: 'bold',
     lineHeight: 1,
     textAlign: 'center',
-    fontFamily: '"SimSun"',
+    fontFamily: '',
   },
   {
     text: '正文内容',

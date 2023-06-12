@@ -13,7 +13,7 @@
           :is="value.component"
           :[value.valuePropName!]="value.value"
           v-bind="value.extraProps || {}"
-          @[value.eventName!]="handleValueChange($event, key)"
+          @[value.eventName!]="handleValueChange($event, key, value.resultTransform)"
         >
           <template v-if="value.options && value.options.length">
             <component
@@ -38,12 +38,16 @@ import type {
   PropsToFormCommon
 } from '@/common/utils/commonTypes';
 import { reduce } from 'lodash-es';
+import { useCanvasStore } from '@/stores/canvas';
 const props = defineProps({
   props: {
     type: Object as PropType<AllComponentType>,
     required: true
   }
 });
+
+const { setComponentProps } = useCanvasStore();
+
 const finalProps = computed(() => {
   return reduce(
     props.props,
@@ -70,8 +74,10 @@ const finalProps = computed(() => {
   );
 });
 
-const handleValueChange = (val: any, key: string) => {
+const handleValueChange = (val: any, key: AllComponentTypeKeys, transform: ((value: any) => any) | undefined) => {
   console.log(val, key)
+  const result = transform ? transform(val) : val;
+  setComponentProps(key, result);
 } 
 </script>
 <style scoped lang="scss">

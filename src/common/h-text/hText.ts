@@ -2,6 +2,7 @@ import { commonDefaultProps } from '../utils/defaultProps';
 import type { CommonProps } from '../utils/defaultProps';
 import { without } from 'lodash-es';
 import type { PropsToFormCommon } from '../utils/defaultProps';
+import { getTargetValue } from '@/utils/commonFun';
 
 export const textDefaultProps = {
   ...commonDefaultProps,
@@ -47,12 +48,14 @@ export const textPropsFromMap: TextPropsFromMap = {
   text: {
     label: '文本：',
     component: 'a-textarea',
-    extraProps: { rows: 3 }
+    extraProps: { rows: 3 },
+    resultTransform: getTargetValue
   },
   fontSize: {
     label: '字号：',
     component: 'a-input-number',
-    initialTransform: (value: string) => parseInt(value)
+    initialTransform: (value: string) => parseInt(value),
+    resultTransform: (value: any) => value + 'px'
   },
   lineHeight: {
     label: '行高：',
@@ -71,7 +74,8 @@ export const textPropsFromMap: TextPropsFromMap = {
       { label: '左', value: 'left' },
       { label: '中', value: 'center' },
       { label: '右', value: 'right' }
-    ]
+    ],
+    resultTransform: getTargetValue
   },
   fontFamily: {
     label: '字体：',
@@ -79,10 +83,10 @@ export const textPropsFromMap: TextPropsFromMap = {
     subComponent: 'a-select-option',
     options: [
       { label: '默认', value: '' },
-      { label: '黑体', value: '"SimHei","STSong"' },
-      { label: '宋体', value: '"SimSun"' },
-      { label: '楷体', value: '"KaiTi"' },
-      { label: '仿宋', value: '"FangSong"' },
+      { label: '宋体', value: '"SimSun","STSong"' },
+      { label: '黑体', value: '"SimHei","STHeiTi"' },
+      { label: '楷体', value: '"KaiTi","STKaiti"' },
+      { label: '仿宋', value: '"FangSong","STFangsong"' },
     ]
   }
 }

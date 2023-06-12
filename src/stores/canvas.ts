@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { v4 as uuidv4 } from 'uuid';
-import type { AllComponentType } from '@/common/utils/commonTypes';
+import type { AllComponentType, AllComponentTypeKeys } from '@/common/utils/commonTypes';
 
 export interface ComponentData {
   id: string;
@@ -28,11 +28,18 @@ export const useCanvasStore = defineStore('canvas', () => {
   const setCurrentElementId = (id: string) => {
     currentElementId.value = id;
   }
+  // 设置当前组件修改的属性值
+  const setComponentProps = <T extends AllComponentTypeKeys>(prop: T, value: any) => {
+    if (currentComponent.value) {
+      currentComponent.value.props[prop] = value;
+    }
+  }
   return {
     components,
     currentElementId,
     currentComponent,
     addComponent,
-    setCurrentElementId
+    setCurrentElementId,
+    setComponentProps
   };
 });

@@ -56,5 +56,6 @@ export type PropsToFormCommon<T> = {
     extraProps?: { [key: string]: any };
     eventName?: string;
     initialTransform?: (value: any) => any;
+    resultTransform?: (value: any) => any;
   }
 }
