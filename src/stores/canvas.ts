@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { v4 as uuidv4 } from 'uuid';
-import type { AllComponentType, AllComponentTypeKeys } from '@/common/utils/commonTypes';
+import type { AllComponentType, AllComponentTypeKeys } from 'online-design-ui';
 
 export interface ComponentData {
   id: string;

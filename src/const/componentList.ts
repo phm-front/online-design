@@ -7,6 +7,7 @@ export const textDefaultTemplate = [
     lineHeight: 1,
     textAlign: 'center',
     fontFamily: '',
+    color: '#000000',
   },
   {
     text: '正文内容',
@@ -26,6 +27,15 @@ export const textDefaultTemplate = [
   }
 ]
 
-export const imageDefaultTemplate = []
+export const imageDefaultTemplate = [
+  {
+    width: '100px',
+    src: 'http://static.imooc-lego.com/upload-files/528w-0ilmEQMomZ8-108048.png'
+  },
+  {
+    width: '100px',
+    src: 'http://static.imooc-lego.com/upload-files/frame-096161.png'
+  }
+]
 
 export const shapeDefaultTemplate = []

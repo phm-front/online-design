@@ -31,12 +31,12 @@
   </div>
 </template>
 <script setup lang="ts">
-import { textPropsFromMap } from '@/common/h-text/hText';
+import { imgPropsFromMap, textPropsFromMap } from 'online-design-ui';
 import type {
   AllComponentType,
   AllComponentTypeKeys,
-  PropsToFormCommon
-} from '@/common/utils/commonTypes';
+  PropsToFormCommonAll
+} from 'online-design-ui';
 import { reduce } from 'lodash-es';
 import { useCanvasStore } from '@/stores/canvas';
 const props = defineProps({
@@ -47,16 +47,17 @@ const props = defineProps({
 });
 
 const { setComponentProps } = useCanvasStore();
+const allPropsFromMap = { ...textPropsFromMap, ...imgPropsFromMap }
 
+// prop与组件的映射
 const finalProps = computed(() => {
   return reduce(
     props.props,
     (result, value, key) => {
       if (
-        Object.prototype.hasOwnProperty.call(textPropsFromMap, key)
+        Object.prototype.hasOwnProperty.call(allPropsFromMap, key)
       ) {
-        const propValue =
-          textPropsFromMap[key as AllComponentTypeKeys]!;
+        const propValue = allPropsFromMap[key as AllComponentTypeKeys]!;
         result[key as AllComponentTypeKeys] = Object.assign(
           {
             value: propValue.initialTransform
@@ -70,10 +71,11 @@ const finalProps = computed(() => {
       }
       return result;
     },
-    {} as Required<PropsToFormCommon>
+    {} as Required<PropsToFormCommonAll>
   );
 });
 
+// 属性值改变
 const handleValueChange = (val: any, key: AllComponentTypeKeys, transform: ((value: any) => any) | undefined) => {
   console.log(val, key)
   const result = transform ? transform(val) : val;

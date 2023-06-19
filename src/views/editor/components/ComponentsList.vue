@@ -1,14 +1,35 @@
 <template>
   <div class="components-list-wrap">
-    <ATabs v-model:componentType="componentType" centered>
+    <ATabs
+      v-model:componentType="componentType"
+      centered
+      @change="handleTabsChange"
+    >
       <ATabPane
         v-for="tab in tabsArr"
-        :key="tab.key">
+        :key="tab.key"
+      >
         <template #tab>
           <component :is="tab.icon"></component>
           {{ tab.label }}
         </template>
-        <div class="component-list">
+        <div
+          class="component-list"
+          :class="{ 'image-list': componentType === 'image' }"
+        >
+          <!-- 上传图片按钮 -->
+          <a-upload
+            v-if="componentType === 'image'"
+            v-model:file-list="fileList"
+            name="file"
+            action="https://api.imooc-lego.com/api/utils/upload-img"
+            @change="handleChange"
+          >
+            <a-button type="primary" style="width: 220px;margin: 0 20px;">
+              <upload-outlined></upload-outlined>
+              上传图片
+            </a-button>
+          </a-upload>
           <div
             class="component-wrapper"
             v-for="(info, index) in curTemplates"
@@ -26,6 +47,7 @@
 import TextTabIcon from '@/components/svg/TextTabIcon.vue';
 import ImageTabIcon from '@/components/svg/ImageTabIcon.vue';
 import ShapeTabIcon from '@/components/svg/ShapeTabIcon.vue';
+import { UploadOutlined } from '@ant-design/icons-vue';
 
 import {
   textDefaultTemplate,
@@ -34,10 +56,12 @@ import {
 } from '@/const/componentList';
 import { useCanvasStore } from '@/stores/canvas';
 
-import type { TextPropsType } from '@/common/h-text/hText';
+import type { AllComponentType } from 'online-design-ui';
+import type { UploadChangeParam } from 'ant-design-vue';
 
 const { addComponent } = useCanvasStore();
 const componentType = ref('text')
+const fileList = ref([]);
 const tabsArr = [
   { icon: TextTabIcon, key: 'text', label: '文本' },
   { icon: ImageTabIcon, key: 'image', label: '图片' },
@@ -49,7 +73,7 @@ const curComponent = computed(() => {
     case 'text':
       return 'HText'
     case 'image':
-      return 'HImage'
+      return 'HPicture'
     case 'shape':
       return 'HShape'
     default:
@@ -69,9 +93,17 @@ const curTemplates = computed(() => {
   }
 })
 
+// tabs切换
+const handleTabsChange = (key: any) => {
+  componentType.value = key
+}
 // 组件列表点击事件
-const handleClick = (info: TextPropsType) => {
-  addComponent(curComponent.value, info)
+const handleClick = (info: AllComponentType) => {
+  addComponent(curComponent.value, {...info})
+}
+// 图片上传
+const handleChange = (info: UploadChangeParam) => {
+  console.log('handleChange', info)
 }
 </script>
 <style scoped lang="scss">
@@ -105,6 +137,13 @@ const handleClick = (info: TextPropsType) => {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.image-list {
+  flex-direction: row;
+  flex-wrap: wrap;
+  .component-wrapper {
+    margin: 16px 15px 0;
+  }
 }
 .component-wrapper {
   cursor: pointer;
